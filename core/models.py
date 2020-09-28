@@ -1,13 +1,15 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Company(models.Model):
-  name = 
-  address = 
-  website = 
+  name = models.TextField()
+  address = models.TextField()
+  website = models.URLField()
 
   def __str__(self):
-      return self.name
+    return self.name
   
 
 
@@ -19,3 +21,6 @@ class Review(models.Model):
         MaxValueValidator(5),
         MinValueValidator(1)
     ])
+
+    def __str__(self):
+      return self.rating
