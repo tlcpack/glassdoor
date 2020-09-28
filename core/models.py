@@ -22,5 +22,8 @@ class Review(models.Model):
         MinValueValidator(1)
     ])
 
+    class Meta:
+        unique_together = ('user', 'company')
+
     def __str__(self):
-      return self.rating
+        return f"{self.user!r} - {self.company!r}"
