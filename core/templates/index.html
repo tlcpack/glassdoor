@@ -4,7 +4,7 @@
 Index page
 {% for company in companies %}
 <div class="jumbotron">
-<h1>{{ company.name }}</h1>
+<h1><a href="{{ company.get_absolute_url }}">{{ company.name }}</h1>
 <p>{{ company.address }}</p>
 </div>
 {% endfor %}

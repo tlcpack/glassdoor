@@ -8,6 +8,9 @@ class Company(models.Model):
   address = models.TextField()
   website = models.URLField()
 
+  def get_absolute_url(self):
+    return reverse('details', args=[str(self.id)])
+
   def __str__(self):
     return self.name
   
