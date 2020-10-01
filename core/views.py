@@ -25,7 +25,7 @@ def CreateReview(request):
         post.author = request.user
         post.save()
         messages.success(request, "Post successfully created!")
-        return redirect('review-detail', pk=post.pk)
+        return redirect('review-detail', id=post_id)
   else:
     form = ReviewForm()
   return render(request, 'create_review.html', {'form': form})

@@ -2,10 +2,12 @@
 
 {% block content %} 
 
+{% load crispy_forms_tags %}
+
 <h3>New review</h3>
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit" class="btn btn-outline-primary">Submit review</button>
 </form>
 {% endblock %}
