@@ -22,9 +22,10 @@
 
 <body class="container">
 <div>
-  <h1 class="mx-auto">Djassdoor <small>Company rating site</small></h1>
+  <h1 class="d-flex justify-content-center">Djassdoor</h1>
+   <p class="d-flex justify-content-center"><i>Company rating site</i></p>
 </div>
-<nav class="nav">
+<nav class="nav d-flex justify-content-center">
   <a class="nav-link m-3 btn btn-outline-info" href="{% url 'index' %}">Home</a>
   <a class="nav-link m-3 btn btn-outline-success" href="{% url 'create_review' %}">Write a review</a>
   <a class="nav-link m-3 btn btn-outline-warning" href="{% url 'add_company' %}">Don't see your company? Add it here</a>
