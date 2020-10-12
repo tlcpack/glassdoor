@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .forms import ReviewForm
+from .forms import ReviewForm, CompanyForm
 from .models import Company, Review
 
 # Create your views here.
@@ -24,8 +24,21 @@ def CreateReview(request):
         post = form.save(commit=False)
         post.author = request.user
         post.save()
-        messages.success(request, "Post successfully created!")
         return redirect('review-detail', id=post_id)
   else:
     form = ReviewForm()
   return render(request, 'create_review.html', {'form': form})
+
+def AddCompany(request):
+  if request.method == "POST":
+    form = CompanyForm(request.POST)
+    if form.is_valid():
+      post = form.save(commit=False)
+      post.author = request.user
+      post.save()
+      return redirect('company-detail', id=company_id)
+  else:
+      form = CompanyForm()
+  return render(request, 'add_company.html', { 'form': form})
+
+          

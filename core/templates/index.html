@@ -2,6 +2,7 @@
 
 {% block content %}
 <div><a href="{% url 'create_review' %}">Write a review</div>
+<div><a href="{% url 'add_company' %}">Don't see your company? Add it here</div>
 {% for company in companies %}
 <div class="jumbotron">
 <h1><a href="{{ company.get_absolute_url }}">{{ company.name }}</h1>
