@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .forms import ReviewForm, CompanyForm
 from .models import Company, Review
@@ -24,7 +24,7 @@ def CreateReview(request):
         post = form.save(commit=False)
         post.author = request.user
         post.save()
-        return redirect('review-detail', id=post_id)
+        return redirect('index')
   else:
     form = ReviewForm()
   return render(request, 'create_review.html', {'form': form})
@@ -36,7 +36,7 @@ def AddCompany(request):
       post = form.save(commit=False)
       post.author = request.user
       post.save()
-      return redirect('company-detail', id=company_id)
+      return redirect('company-detail', id=company.pk)
   else:
       form = CompanyForm()
   return render(request, 'add_company.html', { 'form': form})

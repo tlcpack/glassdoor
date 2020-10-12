@@ -6,6 +6,6 @@ urlpatterns = [
   path('<int:post_id>/reviews', views.CompanyReviews, name='reviews'),
   path('create', views.CreateReview, name='create_review'),
   path('add_company', views.AddCompany, name='add_company'),
-  path('<int:post_id>/review_detail', views.ReviewDetailView.as_view(), name='review-detail'),
-  path('<int:company_id>/company_detail', views.CompanyDetailView.as_view(), name='company-detail')
+  path('<int:pk>/review_detail', views.ReviewDetailView.as_view(), name='review-detail'),
+  path('<int:pk>/company_detail', views.CompanyDetailView.as_view(), name='company-detail')
 ]

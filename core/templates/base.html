@@ -21,11 +21,13 @@
 </head>
 
 <body class="container">
-<div class="mx-auto">
-  <h1>Djassdoor <small>Company rating site</small></h1>
+<div>
+  <h1 class="mx-auto">Djassdoor <small>Company rating site</small></h1>
 </div>
 <nav class="nav">
-  <a class="nav-link" href="{% url 'index' %}">Home</a>
+  <a class="nav-link m-3 btn btn-outline-info" href="{% url 'index' %}">Home</a>
+  <a class="nav-link m-3 btn btn-outline-success" href="{% url 'create_review' %}">Write a review</a>
+  <a class="nav-link m-3 btn btn-outline-warning" href="{% url 'add_company' %}">Don't see your company? Add it here</a>
 </nav>
   {% block content %}{% endblock %}
 </body>
