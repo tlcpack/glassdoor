@@ -2,6 +2,9 @@
 
 {% block content %}
 {% for review in reviews %}
-{{ review.content }}
+<div class="jumbotron">
+<h3>{{ review.company }}</h3>
+<p>{{ review.content }}</p>
+</div>
 {% endfor %}
 {% endblock content %}

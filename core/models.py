@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Company(models.Model):
-  name = models.TextField()
-  address = models.TextField()
+  name = models.TextField(max_length=100)
+  address = models.TextField(max_length=100)
   website = models.URLField()
 
   def get_absolute_url(self):
