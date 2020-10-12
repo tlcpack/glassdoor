@@ -8,14 +8,14 @@ def index(request):
   companies = Company.objects.all()
   return render(request, 'index.html', { 'companies': companies })
 
-def CompanyDetails(request, post_id):
+def CompanyReviews(request, post_id):
   company = get_object_or_404(Company, id=post_id)
   # user = request.user
   reviews = Review.objects.filter(company=company)
 
   context = { 'company': company, 'reviews': reviews}
 
-  return render(request, 'details.html', context=context)
+  return render(request, 'reviews.html', context=context)
 
 def CreateReview(request):
   if request.method == "POST":
@@ -41,4 +41,8 @@ def AddCompany(request):
       form = CompanyForm()
   return render(request, 'add_company.html', { 'form': form})
 
-          
+class ReviewDetailView(generic.DetailView):
+  model = Review
+
+class CompanyDetailView(generic.DetailView):
+  model = Company          

@@ -10,7 +10,7 @@ class Company(models.Model):
   website = models.URLField()
 
   def get_absolute_url(self):
-    return reverse('details', args=[str(self.id)])
+    return reverse('reviews', args=[str(self.id)])
 
   def __str__(self):
     return self.name

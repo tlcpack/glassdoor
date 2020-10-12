@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
   path('', views.index, name='index'),
-  path('<int:post_id>/details', views.CompanyDetails, name='details'),
+  path('<int:post_id>/reviews', views.CompanyReviews, name='reviews'),
   path('create', views.CreateReview, name='create_review'),
-  path('add_company', views.AddCompany, name='add_company')
+  path('add_company', views.AddCompany, name='add_company'),
+  # path()
 ]
