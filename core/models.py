@@ -37,5 +37,8 @@ class Review(models.Model):
         MinValueValidator(1)
     ])
 
+    def get_absolute_url(self):
+      return reverse('reviews', args=[str(self.id)])
+
     def __str__(self):
         return f"{self.company!r} - {self.rating!r}"
