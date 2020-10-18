@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Avg
 from django.views import generic
 from .forms import ReviewForm, CompanyForm
 from .models import Company, Review
@@ -6,7 +7,8 @@ from .models import Company, Review
 # Create your views here.
 def index(request):
   companies = Company.objects.all()
-  return render(request, 'index.html', { 'companies': companies })
+  review_average = Company.objects.all().aggregate(Avg('review'))
+  return render(request, 'index.html', { 'companies': companies, 'review_average': review_average })
 
 def CompanyReviews(request, post_id):
   company = get_object_or_404(Company, id=post_id)
