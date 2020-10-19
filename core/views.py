@@ -6,12 +6,13 @@ from .models import Company, Review
 
 # Create your views here.
 def index(request):
-  companies = Company.objects.all()
+  # companies = Company.objects.all()
+  rating_averages = Company.objects.annotate(avg_rating=Avg('reviews__rating'))
   # review_average = Company.objects.all().aggregate(Avg('review'))
-  reviews = Review.objects.all()
-  rating_average = Review.objects.aggregate(Avg('rating'))
-  comp_reviews = Company.objects.annotate(number_reviews=Count('review'))
-  return render(request, 'index.html', { 'companies': companies, 'reviews': reviews, 'rating_average': rating_average, 'comp_reviews': comp_reviews })
+  # reviews = Review.objects.all()
+  # rating_average = Review.objects.aggregate(Avg('rating'))
+  # comp_reviews = Company.objects.annotate(number_reviews=Count('reviews'))
+  return render(request, 'index.html', { 'rating_averages': rating_averages })
 
 def CompanyReviews(request, post_id):
   company = get_object_or_404(Company, id=post_id)
@@ -45,6 +46,12 @@ def AddCompany(request):
   else:
       form = CompanyForm()
   return render(request, 'add_company.html', { 'form': form})
+
+class IndexListView(generic.ListView):
+  model = Review
+  
+  def get_queryset(self):
+    return Company.objects.annotate(avg_rating=Avg('reviews__rating'))
 
 class ReviewDetailView(generic.DetailView):
   model = Review

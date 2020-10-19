@@ -30,7 +30,7 @@ class Company(models.Model):
 
 
 class Review(models.Model):
-    company = models.ForeignKey('Company', on_delete=models.CASCADE)
+    company = models.ForeignKey('Company', related_name='reviews', on_delete=models.CASCADE)
     content = models.TextField()
     rating = models.IntegerField(validators=[
         MaxValueValidator(5),
