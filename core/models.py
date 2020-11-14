@@ -11,18 +11,8 @@ class Company(models.Model):
   address = models.TextField(max_length=100)
   website = models.URLField()
 
-  def get_average_rating(self):
-    ratings_count = 0
-    ratings_sum = 0
-    for review in self.reviews.all():
-        ratings_sum += review.rating
-        ratings_count += 1
-    if ratings_count == 0:
-        return math.nan
-    return ratings_sum / ratings_count
-
   def get_absolute_url(self):
-    return reverse('reviews', args=[str(self.id)])
+    return reverse('company-detail', args=[str(self.id)])
 
   def __str__(self):
     return self.name

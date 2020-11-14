@@ -6,7 +6,7 @@
 </div>
 {% for company in companies %}
 <div class="jumbotron">
-<h1><a href="{{ companie.get_absolute_url }}">{{ company }}</h1>
+<h1><a href="{{ company.get_absolute_url }}">{{ company }}</h1></a>
 <p>{{ company.address }}</p>
 <p>Average rating: {{ company.avg_rating }}</p>
 <p>Number of reviews: {{ company.count_reviews }}</p>
