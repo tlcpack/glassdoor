@@ -1,3 +1,5 @@
+import math
+
 from django.db import models
 from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -18,16 +20,15 @@ class Company(models.Model):
 
 
 class Review(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    company = models.ForeignKey('Company', related_name='reviews', on_delete=models.CASCADE)
     content = models.TextField()
     rating = models.IntegerField(validators=[
         MaxValueValidator(5),
         MinValueValidator(1)
     ])
 
-    class Meta:
-        unique_together = ('user', 'company')
+    def get_absolute_url(self):
+      return reverse('reviews', args=[str(self.id)])
 
     def __str__(self):
-        return f"{self.user!r} - {self.company!r}"
+        return f"{self.company!r} - {self.rating!r}"

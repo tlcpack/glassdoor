@@ -6,8 +6,11 @@
 </div>
 {% for company in companies %}
 <div class="jumbotron">
-<h1><a href="{{ company.get_absolute_url }}">{{ company.name }}</h1>
+<h1><a href="{% url 'company-detail' company.pk %}">{{ company }}</h1></a>
 <p>{{ company.address }}</p>
+<p><a href="{{ company.get_absolute_url }}">Average rating: {{ company.avg_rating }}</p></a>
+<p>Number of reviews: {{ company.count_reviews }}</p>
+
 </div>
 {% endfor %}
 {% endblock %}

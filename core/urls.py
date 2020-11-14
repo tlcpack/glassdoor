@@ -7,5 +7,5 @@ urlpatterns = [
   path('create', views.CreateReview, name='create_review'),
   path('add_company', views.AddCompany, name='add_company'),
   path('<int:pk>/review_detail', views.ReviewDetailView.as_view(), name='review-detail'),
-  path('<int:pk>/company_detail', views.CompanyDetailView.as_view(), name='company-detail')
+  path('company_detail/<int:pk>', views.CompanyDetailView.as_view(), name='company-detail')
 ]
