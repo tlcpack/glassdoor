@@ -7,12 +7,13 @@ from .models import Company, Review
 # Create your views here.
 def index(request):
   # companies = Company.objects.all()
-  rating_averages = Company.objects.annotate(avg_rating=Avg('reviews__rating'))
+  companies = Company.objects.annotate(avg_rating=Avg('reviews__rating'), count_reviews=Count('reviews'))
+  # number_reviews = Company.objects.annotate(Count('reviews'))
   # review_average = Company.objects.all().aggregate(Avg('review'))
   # reviews = Review.objects.all()
   # rating_average = Review.objects.aggregate(Avg('rating'))
   # comp_reviews = Company.objects.annotate(number_reviews=Count('reviews'))
-  return render(request, 'index.html', { 'rating_averages': rating_averages })
+  return render(request, 'index.html', { 'companies': companies })
 
 def CompanyReviews(request, post_id):
   company = get_object_or_404(Company, id=post_id)

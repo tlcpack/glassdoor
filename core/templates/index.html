@@ -4,11 +4,12 @@
 <div class="d-flex flex-row">
 
 </div>
-{% for rating_average in rating_averages %}
+{% for company in companies %}
 <div class="jumbotron">
-<h1><a href="{{ rating_average.get_absolute_url }}">{{ rating_average }}</h1>
-<p>{{ rating_average.address }}</p>
-<p>Average rating: {{ rating_average.avg_rating }}</p>
+<h1><a href="{{ companie.get_absolute_url }}">{{ company }}</h1>
+<p>{{ company.address }}</p>
+<p>Average rating: {{ company.avg_rating }}</p>
+<p>Number of reviews: {{ company.count_reviews }}</p>
 
 </div>
 {% endfor %}
