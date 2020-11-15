@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
-
-{% block content %}
-{{ company.name}} - {{company.website}}
+{% extends 'base.html' %} {% block content %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title m-2">{{ company.name }}</h5>
+    <h6 class="card-subtitle text-muted m-1">{{ company.website }}</h6>
+    <p class="card-text m-2">{{ company.address }}</p>
+  </div>
+</div>
 {% endblock %}
